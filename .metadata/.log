@@ -1,0 +1,39 @@
+!SESSION 2025-01-31 16:22:25.514 -----------------------------------------------
+eclipse.buildId=4.33.0.20240905-0613
+java.version=22.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product -data /home/flyan/Documents/GitHub/ClinicaMedica
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-31 16:22:28.583
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-31 16:22:30.924
+!MESSAGE Logback config file: /home/flyan/Documents/GitHub/ClinicaMedica/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.1.20240411-1122.xml
+!SESSION 2025-01-31 16:26:01.017 -----------------------------------------------
+eclipse.buildId=4.33.0.20240905-0613
+java.version=22.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product -data /home/flyan/Documents/GitHub/ClinicaMedica
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-31 16:26:07.377
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-31 16:26:09.491
+!MESSAGE Logback config file: /home/flyan/Documents/GitHub/ClinicaMedica/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.1.20240411-1122.xml
+!SESSION 2025-01-31 18:26:26.532 -----------------------------------------------
+eclipse.buildId=4.33.0.20240905-0613
+java.version=22.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product -data /home/flyan/Documents/GitHub/ClinicaMedica
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-31 18:26:40.768
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-01-31 18:26:44.688
+!MESSAGE Logback config file: /home/flyan/Documents/GitHub/ClinicaMedica/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.1.20240411-1122.xml
