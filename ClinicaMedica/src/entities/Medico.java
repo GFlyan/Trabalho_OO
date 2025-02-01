@@ -22,9 +22,9 @@ public class Medico extends PessoaFisica{
 	}
 	
 	public Medico(String nome, String CPF, LocalDate dataNascimento,String CRM, String especialidade) {
-		setNome(nome);
-		setCPF(CPF);
-		setDataNascimento(dataNascimento);
+		this.nome = nome;
+		this.CPF = CPF;
+		this.dataNascimento = dataNascimento;
 		this.CRM = CRM;
 		this.especialidade = especialidade;
 	}

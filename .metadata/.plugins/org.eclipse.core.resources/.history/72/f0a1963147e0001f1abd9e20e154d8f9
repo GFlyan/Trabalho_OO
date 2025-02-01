@@ -1,0 +1,38 @@
+package entities;
+
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+public class test {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		String userOptionString;
+		int userOptionInt;
+		do {
+			userOptionString = JOptionPane.showInputDialog(null, "CLINICA MÉDICA\n\n1 - PORTAL DO PACIENTE\n2 - PORTAL DO MEDICO\n0 - SAIR");
+			System.out.println("------------------------");
+			System.out.println("--------------------------------------");
+			System.out.println("");
+			System.out.println("--------------------------------------");
+			System.out.println("INSIRA: ");
+			userOptionInt = scan.nextInt();
+			System.out.println("--------------------------------------");
+			switch (userOptionInt) {
+			case 1: {
+				
+				break;
+			}
+			case 2: {
+				
+				break;
+			}
+			default:
+				if(userOptionInt != 0) {
+					System.out.println("--------------------------------------");
+					System.out.println("--------------------------------------");
+				}
+			}
+		} while(userOptionInt != 0);
+	}
+}

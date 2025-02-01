@@ -1,0 +1,12 @@
+package entities;
+
+public class test {
+	public static void main(String[] args) {
+		int userOption;
+		do {
+			System.out.println("------------CLINICA MÉDICA------------");
+			System.out.println("1 - PORTAL DO PACIENTE\n2 - PORTAL DO MEDICO\n0 - SAIR");
+			System.out.println("--------------------------------------");
+		} while(userOption != 0);
+	}
+}

@@ -8,4 +8,7 @@
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="entities.Paciente"/>
     <fullyQualifiedTypeName name="entities.Medico"/>
+    <fullyQualifiedTypeName name="entities.RegistroCadastro"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

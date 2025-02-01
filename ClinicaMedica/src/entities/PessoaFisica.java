@@ -1,13 +1,13 @@
 package entities;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-//import java.util.LinkedList;
+//import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class PessoaFisica {
-	private String nome, CPF;
-	private LocalDate dataNascimento;
-	protected ArrayList<Consulta> historicoMedico = new ArrayList<Consulta>();
+	protected String nome, CPF;
+	protected LocalDate dataNascimento;
+	protected LinkedList<Consulta> historicoMedico = new LinkedList<Consulta>();
 	
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -38,8 +38,10 @@ public class PessoaFisica {
 	}
 	
 	public void getHistoricoMedico() {
-		for(Consulta consultas : historicoMedico) {
-			System.out.println(consultas);
+		if(historicoMedico.size() > 0) {
+			for(Consulta consultas : historicoMedico) {
+				System.out.println(consultas);
+			}
 		}
 	}
 }

@@ -1,0 +1,78 @@
+package entities;
+
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+public class test {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		String optionString;
+		int optionBegin, optionPacienteBegin;
+		do {
+			optionString = JOptionPane.showInputDialog(null, "CLINICA MÉDICA\n\n"
+														   + "1 - PORTAL DO PACIENTE\n"
+														   + "2 - PORTAL DO MEDICO\n"
+														   + "0 - SAIR DO SISTEMA");
+			optionBegin = Integer.parseInt(optionString);
+			switch (optionBegin) {
+			case 1: {
+				do {
+					optionString = JOptionPane.showInputDialog(null, "PORTAL DO PACIENTE\n\n"
+																   + "1 - ADICIONAR NOVO PACIENTE\n"
+																   + "2 - VER PACIENTES\n"
+																   + "3 - ATUALIZAR PACIENTE\n"
+																   + "4 - DELETAR PACIENTE\n"
+																   + "0 - VOLTAR");
+					optionPacienteBegin = Integer.parseInt(optionString);
+					
+					switch (optionPacienteBegin) {
+					case 1:
+						
+						String nome = JOptionPane.showInputDialog("CRIAR PACIENTE\nINSIRA O NOME");
+						String CPF = JOptionPane.showInputDialog("CRIAR PACIENTE\nINSIRA O CPF");
+						String dataNascimento = JOptionPane.showInputDialog("CRIAR PACIENTE\nINSIRA A DATA DE NASCIMENTO");
+						Paciente novoPaciente = new Paciente(nome, CPF, null);
+						boolean verificacao = RegistroCadastro.addPaciente(novoPaciente);
+						
+						if(verificacao) {
+							JOptionPane.showMessageDialog(null, "CADASTRO REALIZADO COM SUCESSO");
+						} else {
+							JOptionPane.showMessageDialog(null, "CADASTRO NÃO REALIZADO\nCPF FORNECIDO JA EXISTE NO SISTEMA");
+						}
+						
+						break;
+					
+					case 2:
+						
+						break;
+					
+					case 3:
+						
+						break;
+						
+					case 4:
+						
+						break;
+	
+					default:
+						
+						break;
+					}
+				} while (optionPacienteBegin != 0);
+				break;
+			}
+			case 2: {
+				
+				break;
+			}
+			default:
+				if(optionBegin != 0) {
+					
+				} else {
+					JOptionPane.showMessageDialog(null, "SISTEMA FINALIZADO");
+				}
+			}
+		} while(optionBegin != 0);
+	}
+}

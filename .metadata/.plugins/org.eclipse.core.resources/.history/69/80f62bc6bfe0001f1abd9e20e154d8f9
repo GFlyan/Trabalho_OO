@@ -1,0 +1,155 @@
+package entities;
+
+import java.util.LinkedList;
+
+import javax.swing.JOptionPane;
+
+public class RegistroCadastro {
+	private static LinkedList<Paciente> pacientes = new LinkedList<Paciente>();
+	private static LinkedList<Medico> medicos = new LinkedList<Medico>();
+	
+	private static int procurarCadastro(String CPF, String tipo) {
+		int position = 0;
+		if(tipo == "paciente") { 
+			for(Paciente paciente : pacientes) {
+				if(paciente.getCPF().equals(CPF)) {
+					return position;
+				}
+				position++;
+			}
+		} else if (tipo == "medico"){
+			for(Medico medico : medicos) {
+				if(medico.getCPF().equals(CPF)) {
+					return position;
+				}
+				position++;
+			}
+		}
+		return -1;
+	}
+	
+	public static boolean createPaciente(Paciente paciente) {
+		if(procurarCadastro(paciente.getCPF(), "paciente") == -1) {
+			pacientes.add(paciente);
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean createMedico(Medico medico) {
+		if(procurarCadastro(medico.getCPF(), "medico") == -1) {
+			medicos.add(medico);
+			return true;
+		}
+		return false;
+	}
+	
+	public static void readPaciente(String CPF) {
+		int position = procurarCadastro(CPF, "paciente");
+		if(position != -1) {
+			Paciente paciente = pacientes.get(position);	
+			JOptionPane.showMessageDialog(null, "NOME: " + paciente.getNome() + "\n" + "CPF:" + paciente.getCPF());
+		} else 
+			JOptionPane.showMessageDialog(null, "CPF FORNECIDO NAO EXISTE NO SISTEMA");
+	}
+	
+	public static void readMedico(String CPF) {
+		int position = procurarCadastro(CPF, "medico");	
+		if(position != -1) {
+			Medico medico= medicos.get(position);
+			JOptionPane.showMessageDialog(null, "NOME: " + medico.getNome() + "\n" + "CPF:" + medico.getCPF() + "\n" + "CRM: " + medico.getCRM() + "\n" + "ESPECIALIDADE: " + medico.getEspecialidade());
+		} else 
+			JOptionPane.showMessageDialog(null, "CPF FORNECIDO NAO EXISTE NO SISTEMA");
+	}
+	
+	public static void updatePaciente(String CPF) {
+		int position = procurarCadastro(CPF, "paciente");
+		if(position != -1) {
+			String optionStr;
+			int optionInt;
+			do {
+				optionStr = JOptionPane.showInputDialog(null, "ATUALIZAR PACIENTE\n\n1 - NOME\n2 - CPF\n3 - DATA DE NASCIMENTO\n0 - VOLTAR");
+				optionInt = Integer.parseInt(optionStr);
+				switch (optionInt) {
+				case 1:
+					String updateNome = JOptionPane.showInputDialog("ATUALIZAR PACIENTE\n\nINFORME O NOVO NOME");
+					pacientes.get(position).setNome(updateNome);
+					break;
+
+				case 2:
+					String updateCPF = JOptionPane.showInputDialog("ATUALIZAR PACIENTE\n\nINFORME O NOVO CPF");
+					int verificaCPF = procurarCadastro(CPF, "paciente");
+					if(verificaCPF == -1) 
+						pacientes.get(position).setCPF(updateCPF);
+					else 
+						JOptionPane.showMessageDialog(null, "ATUALIZACAO DE CPF NEGADA\n\nCPF JA EXISTE NO SISTEMA");
+					break;
+					
+				case 3:
+					String updateDataNascimento = JOptionPane.showInputDialog("ATUALIZAR PACIENTE\n\nINFORME O NOVO NOME");
+					pacientes.get(position).setDataNascimento(null);
+					break;
+					
+				default:
+					if(optionInt != 0) JOptionPane.showMessageDialog(null, "OPCAO INVALIDA");
+					break;
+				}
+			} while (optionInt != 0);
+			JOptionPane.showMessageDialog(null, "PACIENTE ATUALIZADO");
+		} else 
+			JOptionPane.showMessageDialog(null, "CPF FORNECIDO NAO EXISTE NO SISTEMA");
+	}
+	
+	public static boolean deletePaciente(String CPF) {
+		int position = procurarCadastro(CPF, "paciente");
+		if(position != -1) {
+			pacientes.remove(position);
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean deleteMedico(String CPF) {
+		int position = procurarCadastro(CPF, "medico");
+		if(position != -1) {
+			medicos.remove(position);
+			return true;
+		}
+		return false;
+	}
+
+	public static void readAllPacientes() {
+		int cod = 1;
+		if(pacientes.isEmpty()) JOptionPane.showMessageDialog(null, "NAO HA PACIENTES CADASTRADOS");
+		for(Paciente paciente : pacientes) {
+			if(cod > 1) {
+				String continuarString;
+				do{
+					continuarString = JOptionPane.showInputDialog("1 - CONTINUAR\n0 - VOLTAR");
+					if(continuarString.equals("1") || continuarString.equals("0")) break;
+					JOptionPane.showMessageDialog(null, "OPCAO INVALIDA");
+				} while(!continuarString.equals("1") && !continuarString.equals("0"));
+				if(continuarString.equals("0")) break;
+			}
+			JOptionPane.showMessageDialog(null, "NOME: " + paciente.getNome() + "\n" + "CPF:" + paciente.getCPF() + "\n\n" + "POSICAO DO PACIENTE NO SISTEMA: " + cod++ );
+		}
+	}
+	
+	public static void readAllMedicos() {
+		int cod = 1;
+		if(medicos.isEmpty()) JOptionPane.showMessageDialog(null, "NAO HA MEDICOS CADASTRADOS");
+		for(Medico medico : medicos) {
+			if(cod > 1) {
+				String continuarString;
+				do{
+					continuarString = JOptionPane.showInputDialog("1 - CONTINUAR\n0 - VOLTAR");
+					if(continuarString.equals("1") || continuarString.equals("0")) break;
+					JOptionPane.showMessageDialog(null, "OPCAO INVALIDA");
+				} while(!continuarString.equals("1") && !continuarString.equals("0"));
+				if(continuarString.equals("0")) break;
+			}
+			JOptionPane.showMessageDialog(null, "NOME: " + medico.getNome() + "\n" + "CPF:" + medico.getCPF() + "\n" + "CRM: " + medico.getCRM() + "\n" + "ESPECIALIDADE: " + medico.getEspecialidade() + "\n\n" +  "POSICAO DO MEDICO NO SISTEMA: " + cod++);
+		}
+	}
+
+}

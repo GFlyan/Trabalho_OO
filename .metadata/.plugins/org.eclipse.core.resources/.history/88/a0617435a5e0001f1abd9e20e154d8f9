@@ -1,0 +1,81 @@
+package entities;
+
+import java.util.LinkedList;
+
+import javax.swing.JOptionPane;
+
+public class RegistroCadastro {
+	private static LinkedList<Paciente> pacientes = new LinkedList<Paciente>();
+	private static LinkedList<Medico> medicos = new LinkedList<Medico>();
+	
+	private static boolean situacaoCadastral(String CPF, String tipo) {
+		System.out.println("LISTA PACIENTES:");
+		if(tipo == "paciente") { 
+			for(Paciente paciente : pacientes) {
+				if(paciente.getCPF().equals(CPF)) {
+					System.out.println("TA FUNCIONANDO");
+					return true;
+				}
+			}
+		} else if (tipo == "medico"){
+			for(Medico medico : medicos) {
+				if(medico.getCPF().equals(CPF)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public static boolean addPaciente(Paciente paciente) {
+		System.out.println("ENDEREÇO PACIENTE: " + paciente);
+		if(!situacaoCadastral(paciente.getCPF(), "paciente")) {
+			pacientes.add(paciente);
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean addMedico(Medico medico) {
+		if(!situacaoCadastral(medico.getCPF(), "medico")) {
+			medicos.add(medico);
+			return true;
+		}
+		return false;
+	}
+	
+	public static void readPacientes() {
+		int cod = 0;
+		int amount = pacientes.size();
+		if(pacientes.isEmpty()) JOptionPane.showMessageDialog(null, "NÃO HA PACIENTES CADASTRADOS");
+		for(Paciente paciente : pacientes) {
+			JOptionPane.showMessageDialog(null, "COD PACIENTE: " + ++cod + "\n" + "NOME DO PACIENTE: " + paciente.getNome() + "\n" + "CPF DO PACIENTE:" + paciente.getCPF() + "\n\n" + "INSIRA 0 PARA SAIR");
+			if(amount > 1) {
+				String continuarString;
+				do{
+					continuarString = JOptionPane.showInputDialog("1 - CONTINUAR\n0 - VOLTAR");
+					if(!continuarString.equals("1") || !continuarString.equals("0")) JOptionPane.showMessageDialog(null, "OPCAO INVALIDA");
+				} while(!continuarString.equals("1") || !continuarString.equals("0"));
+				if(continuarString.equals("0")) break;
+			}
+		}
+	}
+ 
+	public static boolean deletePaciente(Paciente paciente) {
+		int position = pacientes.indexOf(paciente);
+		if(position != -1) {
+			pacientes.remove(position);
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean deleteMedico(Medico medico) {
+		int position = medicos.indexOf(medico);
+		if(position != -1) {
+			medicos.remove(position);
+			return true;
+		}
+		return false;
+	}
+}

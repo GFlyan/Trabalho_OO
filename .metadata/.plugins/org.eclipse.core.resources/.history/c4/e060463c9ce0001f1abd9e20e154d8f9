@@ -1,0 +1,33 @@
+package entities;
+
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+public class test {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		String userOptionString;
+		int userOptionIntBegin;
+		do {
+			userOptionString = JOptionPane.showInputDialog(null, "CLINICA MÉDICA\n\n1 - PORTAL DO PACIENTE\n2 - PORTAL DO MEDICO\n0 - SAIR DO SISTEMA");
+			userOptionIntBegin = Integer.parseInt(userOptionString);
+			switch (userOptionIntBegin) {
+			case 1: {
+				userOptionString = JOptionPane.showInputDialog(null, "PORTAL DO PACIENTE\n\n1 - CRIAR PACIENTE\n2 - VER PACIENTE\n3 - ATUALIZAR PACIENTE\n4 - DELETAR PACIENTE\n0 - VOLTAR");
+				break;
+			}
+			case 2: {
+				
+				break;
+			}
+			default:
+				if(userOptionIntBegin != 0) {
+					
+				} else {
+					JOptionPane.showMessageDialog(null, "SISTEMA FINALIZADO");
+				}
+			}
+		} while(userOptionIntBegin != 0);
+	}
+}
