@@ -28,6 +28,19 @@ public class RegistroCadastro {
 		return -1;//Caso o CPF não exista no sistema
 	}
 	
+	private static int procurarCadastro2(String CRM, String tipo) { //polimorfismo
+		int position = 0;
+		if(tipo == "medico") { 
+			for(Medico medico : medicos) {
+				if(medico.getCRM().equals(CRM)) {
+					return position;
+				}
+				position++;
+			}
+		}
+		return -1;//Caso o CPF não exista no sistema
+	}
+	
 	public static boolean createPaciente(Paciente paciente) {
 		if(procurarCadastro(paciente.getCPF(), "paciente") == -1) {
 			pacientes.add(paciente);
@@ -88,7 +101,7 @@ public class RegistroCadastro {
 					break;
 					
 				case 3:
-					String updateDataNascimento = JOptionPane.showInputDialog("ATUALIZAR PACIENTE\n\nINFORME O NOVO NOME");
+					String updateDataNascimento = JOptionPane.showInputDialog("ATUALIZAR PACIENTE\n\nINFORME A DATA DE NASCIMENTO");
 					pacientes.get(position).setDataNascimento(null);
 					JOptionPane.showMessageDialog(null, "DATA DE NASCIMENTO DO PACIENTE ATUALIZADA");
 					break;
@@ -101,6 +114,63 @@ public class RegistroCadastro {
 		} else 
 			JOptionPane.showMessageDialog(null, "CPF FORNECIDO NAO EXISTE NO SISTEMA");
 	}
+	
+	public static void updateMedico(String CPF) {
+		int position = procurarCadastro(CPF, "medico");
+		if(position != -1) {
+			String optionStr;
+			int optionInt;
+			do {
+				optionStr = JOptionPane.showInputDialog(null, "ATUALIZAR MEDICO\n\n1 - NOME\n2 - CPF\n3 - DATA DE NASCIMENTO\n4 - CRM\n5 - ESCPECIALIDADE\n0 - VOLTAR");
+				optionInt = Integer.parseInt(optionStr);
+				switch (optionInt) {
+				case 1:
+					String updateNome = JOptionPane.showInputDialog("ATUALIZAR MEDICO\n\nINFORME O NOVO NOME");
+					medicos.get(position).setNome(updateNome);
+					JOptionPane.showMessageDialog(null, "NOME DO MEDICO ATUALIZADO");
+					break;
+
+				case 2:
+					String updateCPF = JOptionPane.showInputDialog("ATUALIZAR MEDICO\n\nINFORME O NOVO CPF");
+					int verificaCPF = procurarCadastro(updateCPF, "paciente");
+					if(verificaCPF == -1) {
+						medicos.get(position).setCPF(updateCPF);
+						JOptionPane.showMessageDialog(null, "CPF DO MEDICO ATUALIZADO");
+					} else 
+						JOptionPane.showMessageDialog(null, "ATUALIZACAO DE CPF NEGADA\n\nCPF JA EXISTE NO SISTEMA");
+					break;
+					
+				case 3:
+					String updateDataNascimento = JOptionPane.showInputDialog("ATUALIZAR MEDICO\n\nINFORME A DATA DE NASCIMENTO");
+					pacientes.get(position).setDataNascimento(null);
+					JOptionPane.showMessageDialog(null, "DATA DE NASCIMENTO DO MEDICO ATUALIZADA");
+					break;
+					
+				case 4:
+					String updateCRM = JOptionPane.showInputDialog("ATUALIZAR MEDICO\n\nINFORME O NOVO CPF");
+					int verificaCRM = procurarCadastro2(updateCRM, "medico");
+					if(verificaCRM == -1) {
+						medicos.get(position).setCRM(updateCRM);
+						JOptionPane.showMessageDialog(null, "CRM DO MEDICO ATUALIZADO");
+					} else 
+						JOptionPane.showMessageDialog(null, "ATUALIZACAO DE CRM NEGADA\n\nCPF JA EXISTE NO SISTEMA");				
+					break;
+					
+				case 5:
+					String updateEspecialidade = JOptionPane.showInputDialog("ATUALIZAR MEDICO\n\nINFORME A NOVA ESPECIALIDADE");
+					medicos.get(position).setEspecialidade(updateEspecialidade);
+					JOptionPane.showMessageDialog(null, "ESPECIALIDADE DO MEDICO ATUALIZADO");
+					break;
+					
+				default:
+					if(optionInt != 0) JOptionPane.showMessageDialog(null, "OPCAO INVALIDA");
+					break;
+				}
+			} while (optionInt != 0);
+		} else 
+			JOptionPane.showMessageDialog(null, "CPF FORNECIDO NAO EXISTE NO SISTEMA");
+	}
+	
 	
 	
 	
@@ -152,6 +222,40 @@ public class RegistroCadastro {
 		}
 		else JOptionPane.showMessageDialog(null, "CPF FORNECIDO NAO EXISTE NO SISTEMA");
 	}
+	
+	public static void accessMedico(String CPF) {
+		int position = procurarCadastro(CPF, "medico");
+		if(position != -1) {
+			String optionStr;
+			int optionInt;
+			do {
+				optionStr = JOptionPane.showInputDialog("\n1 - DADOS DO MEDICO\n2 - HISTORICO MEDICO\n0 - VOLTAR");
+				optionInt = Integer.parseInt(optionStr);
+				switch (optionInt) {
+				case 1:
+					readMedico(CPF);
+					break;
+					
+				case 2:
+					
+					break;
+					
+				case 3:
+					
+					break;
+					
+				default:
+					if(optionInt != 0) 
+						JOptionPane.showMessageDialog(null, "OPCAO INVALIDA");
+					break;
+				}
+			} while(optionInt != 0);
+		}
+		else JOptionPane.showMessageDialog(null, "CPF FORNECIDO NAO EXISTE NO SISTEMA");
+	}
+	
+	
+	
 	
 	public static void readAllPacientes() {
 		int cod = 1;
