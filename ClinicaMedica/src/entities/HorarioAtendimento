@@ -1,1 +1,12 @@
+package entities;
 
+public class{
+    private String dia;
+    private String inicio;
+    private String fim;
+
+    public boolean disponibilidade(){
+    //comparativo de horários
+    }
+  
+}
