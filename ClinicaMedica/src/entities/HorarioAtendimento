@@ -1,6 +1,6 @@
 package entities;
 
-public class{
+public class HorarioAtendimento{
     private String dia;
     private String inicio;
     private String fim;
